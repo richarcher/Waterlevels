@@ -1,6 +1,6 @@
 class DamsController < ApplicationController
   def index
-    @dams = Dam.all
+    @dams = Dam.all.order('name')
   end
 
   def show
