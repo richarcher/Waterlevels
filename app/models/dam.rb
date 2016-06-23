@@ -9,9 +9,10 @@
 #
 
 class Dam < ActiveRecord::Base
-  has_many :levels
+  has_many :levels, dependent: :destroy
 
   def self.import(file)
+    puts "Destroying previous records"
     Dam.destroy_all
     csv = CSV.read(file, encoding: 'ISO8859-1', headers: false)
     header_row = csv[2]

@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20160623083547) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "dams", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -21,14 +24,14 @@ ActiveRecord::Schema.define(version: 20160623083547) do
 
   create_table "levels", force: :cascade do |t|
     t.integer  "dam_id"
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.datetime "date"
-    t.decimal  "height",     precision: 6, scale: 2
+    t.decimal  "height"
     t.integer  "storage"
-    t.decimal  "percentage", precision: 4, scale: 2
+    t.decimal  "percentage"
   end
 
-  add_index "levels", ["dam_id"], name: "index_levels_on_dam_id"
+  add_index "levels", ["dam_id"], name: "index_levels_on_dam_id", using: :btree
 
 end
