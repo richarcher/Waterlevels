@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160623081504) do
+ActiveRecord::Schema.define(version: 20160623083547) do
 
   create_table "dams", force: :cascade do |t|
     t.string   "name"
@@ -21,8 +21,12 @@ ActiveRecord::Schema.define(version: 20160623081504) do
 
   create_table "levels", force: :cascade do |t|
     t.integer  "dam_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.datetime "date"
+    t.decimal  "height",     precision: 6, scale: 2
+    t.integer  "storage"
+    t.decimal  "percentage", precision: 4, scale: 2
   end
 
   add_index "levels", ["dam_id"], name: "index_levels_on_dam_id"
