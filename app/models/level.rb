@@ -14,4 +14,6 @@
 
 class Level < ActiveRecord::Base
   belongs_to :dam
+
+  default_scope { order('date DESC') }
 end

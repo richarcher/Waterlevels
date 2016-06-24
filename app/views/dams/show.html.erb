@@ -12,7 +12,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @dam.levels.order("date DESC").each do |level| %>
+    <% @dam.levels.each do |level| %>
       <tr>
         <td><%= level.date.strftime('%d-%b-%y') %></td>
         <td><%= level.height %></td>
