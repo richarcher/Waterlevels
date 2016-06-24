@@ -17,6 +17,7 @@ class Dam < ActiveRecord::Base
     header_row = csv[2]
     header_row.each_slice(4).with_index do |dam, i|
         if (dam.length == 4)
+            next if ENV['DAMS'].exclude? dam[1]
             Dam.create(name: dam[1]) if Dam.find_by_name(dam[1]).nil?
             d = Dam.find_by_name(dam[1])
             csv.each_with_index do |row, j|
