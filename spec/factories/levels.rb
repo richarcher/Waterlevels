@@ -7,9 +7,9 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  date       :datetime
-#  height     :decimal(6, 2)
+#  height     :decimal(, )
 #  storage    :integer
-#  percentage :decimal(4, 2)
+#  percentage :decimal(, )
 #
 
 FactoryGirl.define do

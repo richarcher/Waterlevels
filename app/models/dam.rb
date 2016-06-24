@@ -12,14 +12,12 @@ class Dam < ActiveRecord::Base
   has_many :levels, dependent: :destroy
 
   def self.import(file)
-    puts "Destroying previous records"
     Dam.destroy_all
-    csv = CSV.read(file, encoding: 'ISO8859-1', headers: false)
+    csv = CSV.read(file, encoding: 'ISO8859-1')
     header_row = csv[2]
     header_row.each_slice(4).with_index do |dam, i|
         if (dam.length == 4)
             d = Dam.create(name: dam[1])
-            puts "Importing waterlevel data for `#{dam[1]}`..."
             csv.each_with_index do |row, j|
                 next if j <= 5
                 break if row[1] == '0.00'
