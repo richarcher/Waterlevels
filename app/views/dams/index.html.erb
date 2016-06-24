@@ -13,10 +13,10 @@
   </thead>
   <tbody>
     <tr>
-      <td><%= dam.levels.order("date ASC").last.date.strftime('%d-%b-%y') %></td>
-      <td><%= dam.levels.order("date ASC").last.height %></td>
-      <td><%= dam.levels.order("date ASC").last.storage %></td>
-      <td><%= dam.levels.order("date ASC").last.percentage %></td>
+      <td><%= dam.levels.order("date ASC").first.date.strftime('%d-%b-%y') %></td>
+      <td><%= dam.levels.order("date ASC").first.height %></td>
+      <td><%= dam.levels.order("date ASC").first.storage %></td>
+      <td><%= dam.levels.order("date ASC").first.percentage %></td>
     </tr>
   </tbody>
 </table>
