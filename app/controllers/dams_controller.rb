@@ -4,6 +4,8 @@ class DamsController < ApplicationController
     dams = ENV['DAMS'].split('|')
     @dams = Dam.where( name: dams )
 
+    @dams = Dam.all if params[:display] == 'all'
+
     respond_to do |format|
       format.html
       format.json { render json: @dams.to_json }
