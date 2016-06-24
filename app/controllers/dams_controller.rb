@@ -1,10 +1,7 @@
 class DamsController < ApplicationController
 
   def index
-    dams = ENV['DAMS'].split('|')
-    @dams = Dam.where( name: dams )
-
-    @dams = Dam.all if params[:display] == 'all'
+    @dams = Dam.all
 
     respond_to do |format|
       format.html
