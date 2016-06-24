@@ -9,7 +9,7 @@ RSpec.describe DamsController, type: :controller do
     end
 
     it "assigns @dams" do
-      dam = FactoryGirl.create(:dam)
+      dam = FactoryGirl.create(:dam, :name => 'WEMMERSHOEK')
       get :index
       expect(assigns(:dams)).to eq([dam])
     end

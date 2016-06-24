@@ -1,6 +1,7 @@
 class DamsController < ApplicationController
   def index
-    @dams = Dam.all.order('name')
+    dams = ['WEMMERSHOEK', 'STEENBRAS LOWER', 'STEENBRAS UPPER', 'VOËLVLEI', 'THEEWATERSKLOOF', 'BERG RIVER']
+    @dams = Dam.where( name: dams )
   end
 
   def show
