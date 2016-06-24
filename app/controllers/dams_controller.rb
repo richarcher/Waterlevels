@@ -1,7 +1,7 @@
 class DamsController < ApplicationController
 
   def index
-    dams = ['WEMMERSHOEK', 'STEENBRAS LOWER', 'STEENBRAS UPPER', 'VOËLVLEI', 'THEEWATERSKLOOF', 'BERG RIVER']
+    dams = ENV['DAMS'].split('|')
     @dams = Dam.where( name: dams )
 
     respond_to do |format|
