@@ -18,3 +18,7 @@
 
 # Ignore local ENV variables
 /config/local_env.yml
+
+# React
+npm-debug.log
+node_modules
