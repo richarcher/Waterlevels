@@ -5,7 +5,7 @@ set :repo_url,        'git@github.com:richarcher/Waterlevels.git'
 set :application,     'waterlevels'
 set :user,            'deploy'
 set :puma_threads,    [4, 16]
-set :puma_workers,    0
+set :puma_workers,    2
 
 # Don't change these unless you know what you're doing
 set :pty,             true
