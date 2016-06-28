@@ -34,4 +34,5 @@ ActiveRecord::Schema.define(version: 20160623083547) do
 
   add_index "levels", ["dam_id"], name: "index_levels_on_dam_id", using: :btree
 
+  add_foreign_key "levels", "dams"
 end
