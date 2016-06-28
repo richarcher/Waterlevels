@@ -27,7 +27,7 @@ RSpec.describe Dam, type: :model do
   describe '#import' do
     before :each do
       FactoryGirl.create(:dam, name: 'Dam #1')
-      allow(File).to receive(:open).with('file', {:universal_newline=>false, :encoding=>'ISO8859-1'}).and_return(data)
+      allow(File).to receive(:open).with('file', {universal_newline: false, encoding: 'ISO8859-1:utf-8'}).and_return(data)
       Dam.import('file')
     end
 
@@ -43,7 +43,7 @@ RSpec.describe Dam, type: :model do
     it 'appends new levels to existing dams on subsequent import' do
       olddam = Dam.find_by_name('WEMMERSHOEK')
       newdata = data + "03-Jan-12,48.19,44 391,75.9,,20.28,23 298,69.7,\r"
-      allow(File).to receive(:open).with('file', {:universal_newline=>false, :encoding=>'ISO8859-1'}).and_return(newdata)
+      allow(File).to receive(:open).with('file', {universal_newline: false, encoding: 'ISO8859-1:utf-8'}).and_return(newdata)
       Dam.import('file')
       expect( Dam.find_by_name('WEMMERSHOEK') ).to eq olddam
       expect( Dam.find_by_name('WEMMERSHOEK').levels.count ).to eq 3

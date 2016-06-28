@@ -13,7 +13,7 @@ class Dam < ActiveRecord::Base
 
   def self.import(file)
     puts "Begin import" unless Rails.env.test?
-    csv = CSV.read(file, encoding: 'ISO8859-1')
+    csv = CSV.read(file, encoding: 'ISO8859-1:utf-8')
     header_row = csv[2]
     header_row.each_slice(4).with_index do |dam, i|
         if (dam.length == 4)
