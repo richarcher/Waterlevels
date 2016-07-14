@@ -23,7 +23,7 @@ Import the latest data by running `rake waterlevel:import`.
 
 ## Roadmap
 
-- [ ] Nest API behind `api/v1/` path
+- [x] Nest API behind `api/v1/` path
 - [ ] Add React Frontend
 - [ ] Investigate automatic data imports
 

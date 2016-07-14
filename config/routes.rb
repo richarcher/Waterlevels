@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  root to: "dams#index"
-  get 'dams' => 'dams#index'
-  get 'dams/:id' => 'dams#show', as: 'dam'
+  root to: "api/v1/dams#index"
+  namespace :api do
+    namespace :v1 do
+      resources :dams
+    end
+  end
 end
