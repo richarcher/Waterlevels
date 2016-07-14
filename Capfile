@@ -3,7 +3,11 @@ require 'capistrano/setup'
 require 'capistrano/deploy'
 
 require 'capistrano/secrets_yml'
-require 'capistrano/rails'
+# removing /rails, but keeping /bundler and /rails/migrations
+# because we don't have assets any more
+# require 'capistrano/rails'
+require 'capistrano/bundler'
+require 'capistrano/rails/migrations'
 require 'capistrano/bundler'
 require 'capistrano/rvm'
 require 'capistrano/puma'
