@@ -1,4 +1,4 @@
-# Waterlevels
+# Waterlevels [![Build Status](https://travis-ci.org/richarcher/Waterlevels.svg)](https://travis-ci.org/richarcher/Waterlevels)
 
 A website to display dam waterlevels in Cape Town's 6 major dams.
 
