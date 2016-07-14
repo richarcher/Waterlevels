@@ -16,10 +16,6 @@
 !/log/.keep
 /tmp
 
-# Ignore secrets.yml
-/config/secrets.yml
-
 # React
 npm-debug.log
 node_modules
-config/secrets.yml

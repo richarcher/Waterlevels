@@ -1,0 +1,6 @@
+language: ruby
+sudo: false
+services:
+  - postgresql
+before_script:
+  - psql -c 'create database waterlevels_test;' -U postgres
