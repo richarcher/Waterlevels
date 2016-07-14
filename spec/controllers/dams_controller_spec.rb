@@ -21,12 +21,12 @@ RSpec.describe DamsController, type: :controller do
     end
 
     it "returns http success" do
-      get :show, id: @dam
+      get :show, params: { id: @dam }
       expect(response).to have_http_status(:success)
     end
 
     it "assigns @dam" do
-      get :show, id: @dam
+      get :show, params: { id: @dam }
       expect(assigns(:dam)).to eq(@dam)
     end
   end
