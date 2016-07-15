@@ -19,3 +19,7 @@
 # React
 npm-debug.log
 node_modules
+
+
+# Compiled Assets
+/public/assets/*
