@@ -19,3 +19,8 @@
 # React
 npm-debug.log
 node_modules
+
+
+# yeoman
+/coverage
+.editorconfig
