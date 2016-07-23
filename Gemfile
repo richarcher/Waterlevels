@@ -7,6 +7,7 @@ gem 'rails', '>= 5.0.0.rc2', '< 5.1'
 gem 'pg'
 gem 'jbuilder', '~> 2.0'
 gem 'active_model_serializers'
+gem 'rack-cors'
 
 group :production do
   gem 'puma'

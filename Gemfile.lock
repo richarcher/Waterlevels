@@ -114,6 +114,7 @@ GEM
     pkg-config (1.1.7)
     puma (3.4.0)
     rack (2.0.1)
+    rack-cors (0.4.0)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (5.0.0)
@@ -201,6 +202,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   pg
   puma
+  rack-cors
   rails (>= 5.0.0.rc2, < 5.1)
   rails-controller-testing
   rspec-rails
