@@ -15,6 +15,10 @@ class DamSerializer < ActiveModel::Serializer
 
   attributes :id, :name, :updated_at, :links
 
+  has_many :levels do
+    object.levels.first(1)
+  end
+
   def links
     { self: api_v1_dam_path(object) }
   end

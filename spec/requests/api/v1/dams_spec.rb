@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "/api/v1/dams" do
   before :each do
-    @dams = FactoryGirl.create_list(:dam, 10)
+    @dams = FactoryGirl.create_list(:dam_with_levels, 10)
     get '/api/v1/dams'
   end
 
@@ -18,6 +18,11 @@ describe "/api/v1/dams" do
   it 'sends a link to individual dam api' do
     json =  JSON.parse(response.body)
     expect(json['dams'][0]['links']['self']).to eq( "/api/v1/dams/#{@dams[0].id}" )
+  end
+
+  it 'sends the most recent level' do
+    json = JSON.parse(response.body)['dams'][0]['levels'][0].keys
+    expect(json).to contain_exactly('date', 'height', 'id', 'percentage', 'storage', 'updated_at')
   end
 end
 

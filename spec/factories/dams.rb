@@ -11,5 +11,16 @@
 FactoryGirl.define do
   factory :dam do
     name FFaker::Address.neighborhood
+
+    factory :dam_with_levels do
+
+      transient do
+        levels_count 5
+      end
+
+      after(:create) do |dam, evaluator|
+        create_list(:level, evaluator.levels_count, dam: dam)
+      end
+    end
   end
 end
