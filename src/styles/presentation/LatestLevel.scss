@@ -1,0 +1,24 @@
+.latestlevel-component {
+  border-style: solid;
+  border-width: 5px;
+  border-color: black;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-width: 0;
+  margin: 0 auto 1em;
+  position: relative;
+  overflow: hidden;
+
+  .inner {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: skyblue;
+    height: 100%;
+    transform: scaleY(0);
+    transform-origin: bottom;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+}
