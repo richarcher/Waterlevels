@@ -12,6 +12,7 @@ class AppComponent extends React.Component {
 }
 
 AppComponent.propTypes = {
+  children: React.PropTypes.element.isRequired
 };
 
 AppComponent.defaultProps = {

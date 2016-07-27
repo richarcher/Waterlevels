@@ -6,14 +6,15 @@ import { Link } from 'react-router';
 import LatestLevel from './LatestLevelComponent';
 
 
-require('styles/presentation/DamItem.scss');
+require('styles/presentation/DamListItem.scss');
 
-class DamItemComponent extends React.Component {
+class DamListItemComponent extends React.Component {
   render() {
+    const fullyVisible = this.props.styles.o === 1;
     return (
       <div className="damitem-component" style={{opacity: this.props.styles.o}}>
         <div>
-          <LatestLevel level={this.props.dam.levels[0]} />
+          <LatestLevel storage={190878} newLevel={this.props.dam.levels[0]} fullyVisible={fullyVisible} />
         </div>
         <div>
           <span>{this.props.dam.levels[0].percentage}%</span>
@@ -24,15 +25,11 @@ class DamItemComponent extends React.Component {
   }
 }
 
-DamItemComponent.displayName = 'DamItemComponent';
+DamListItemComponent.displayName = 'DamListItemComponent';
 
-DamItemComponent.propTypes = {
-  dam: React.PropTypes.object,
-  styles: React.PropTypes.object
-};
-DamItemComponent.defaultProps = {
-  dam: {},
-  styles: {}
+DamListItemComponent.propTypes = {
+  dam: React.PropTypes.object.isRequired,
+  styles: React.PropTypes.object.isRequired
 };
 
-export default DamItemComponent;
+export default DamListItemComponent;
