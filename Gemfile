@@ -28,6 +28,7 @@ group :development, :test do
   gem 'capistrano-bundler', require: false
   gem 'capistrano3-puma',   require: false
   gem 'capistrano-secrets-yml', require: false
+  gem 'foreman'
 end
 
 group :development do
