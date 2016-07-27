@@ -1,6 +1,9 @@
 'use strict';
 
 import React from 'react';
+import { constant, range } from 'lodash';
+import { StaggeredMotion, spring } from 'react-motion';
+
 import DamItem from '../presentation/DamItemComponent';
 import * as damApi from '../../actions/dam-api';
 
@@ -10,31 +13,54 @@ class HomePageComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      dams: this.props.dams
+      dams: props.dams
     };
   }
 
   componentDidMount() {
     damApi.getDamSummary().then(response => {
+      response.dams.sort((a, b) => b.levels[0].storage - a.levels[0].storage);
       this.setState({dams: response.dams})
     });
   }
 
   render() {
-    return (
-      <div className="homepage-component">
-        <section>
-          <h1>Cape Town water levels</h1>
-          <ol>
-            { this.state.dams.map(this.createDamItem) }
-          </ol>
-        </section>
-      </div>
-    );
+    if (this.state.dams.length) {
+      const firstStyles = range(this.state.dams.length).map(constant( { o: 0 }));
+      const otherStyles = (prevInterpolatedStyles) => {
+        return prevInterpolatedStyles.map((_, i) => {
+          return i === 0
+          // Initial stiffness and damping
+          ? { o: spring(1) }
+          // Final stiffness and damping
+          : { o: spring(prevInterpolatedStyles[i - 1].o) };
+        })};
+
+        return (
+          <div className="homepage-component">
+          <section>
+            <h1>Cape Town water levels</h1>
+            <ol>
+              <StaggeredMotion defaultStyles={firstStyles} styles={otherStyles}>
+                {(interpolatingStyles) => {
+                  return <div>
+                  {interpolatingStyles.map((otherStyles, i) => {
+                    return this.createDamItem(this.state.dams[i], otherStyles)
+                  })}
+                  </div>;
+                }}
+              </StaggeredMotion>
+            </ol>
+          </section>
+          </div>
+        );
+    } else {
+      return <div></div>
+    }
   }
 
-  createDamItem(dam) {
-    return <DamItem key={dam.id} dam={dam} />;
+  createDamItem(dam, styles) {
+    return <DamItem key={dam.id} dam={dam} styles={styles} />;
   }
 }
 

@@ -7,28 +7,28 @@ require('styles/presentation/LatestLevel.scss');
 
 class LatestLevelComponent extends React.Component {
   render() {
+    let props = this.props;
     let level = this.props.level;
     let percentage = parseInt(level.percentage, 10) / 100;
-    let tenth = parseInt(level.percentage, 10) / 10;
-    let wobble = {stiffness: 100, damping: tenth };
-    // let relativeSize = 1;
+    let wobble = {stiffness: level.percentage/5, damping: level.percentage/20 };
     let relativeSize = parseInt(level.storage,10) / 190878;
-    console.log(level.storage)
+    let targetArea = 1.618*relativeSize;
+    let squareRoot = Math.pow((targetArea/props.width),0.5)
+    let newHeight = squareRoot * 150;
+    let newWidth = (squareRoot * props.width) * 150;
 
     return (
-      <div style={{ width: this.props.width, height: this.props.height*relativeSize }} className="latestlevel-component">
+      <div style={{ width: newWidth, height: newHeight }} className="latestlevel-component">
         <Motion
           defaultStyle={{
-            y : 0,
-            opacity : 0
+            y : 0
           }}
           style={{
-            y : spring(percentage, wobble),
-            opacity : spring( 1, wobble )
+            y : spring(percentage, wobble)
           }}>
 
           {
-            style => <div className="inner" style={{transform: `scaleY(${style.y})`, opacity: style.opacity }}></div>
+            style => <div className="inner" style={{transform: `scaleY(${style.y})` }}></div>
           }
         </Motion>
       </div>
@@ -42,8 +42,8 @@ LatestLevelComponent.propTypes = {
   level: React.PropTypes.object
 };
 LatestLevelComponent.defaultProps = {
-  width: 200,
-  height: 200,
+  width: 1.618,
+  height: 1,
   level: {}
 };
 

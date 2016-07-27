@@ -8,7 +8,7 @@ require('styles/presentation/DamItem.scss');
 class DamItemComponent extends React.Component {
   render() {
     return (
-      <div className="damitem-component">
+      <div className="damitem-component" style={{opacity: this.props.styles.o}}>
         <div>
           <LatestLevel level={this.props.dam.levels[0]} />
         </div>
@@ -24,10 +24,12 @@ class DamItemComponent extends React.Component {
 DamItemComponent.displayName = 'DamItemComponent';
 
 DamItemComponent.propTypes = {
-  dam: React.PropTypes.object
+  dam: React.PropTypes.object,
+  styles: React.PropTypes.object
 };
 DamItemComponent.defaultProps = {
-  dam: {}
+  dam: {},
+  styles: {}
 };
 
 export default DamItemComponent;
