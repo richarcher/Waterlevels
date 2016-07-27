@@ -3,9 +3,9 @@
 import React from 'react';
 import { constant, range } from 'lodash';
 import { StaggeredMotion, spring } from 'react-motion';
+import * as damApi from '../../actions/dam-api';
 
 import DamItem from '../presentation/DamItemComponent';
-import * as damApi from '../../actions/dam-api';
 
 require('styles/pages/HomePage.scss');
 

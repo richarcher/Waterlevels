@@ -1,12 +1,13 @@
 require('normalize.css/normalize.css');
 
 import React from 'react';
-import HomePage from './pages/HomePageComponent';
 
 class AppComponent extends React.Component {
 
   render() {
-    return <HomePage />;
+    return <div>
+      {this.props.children}
+    </div>
   }
 }
 
