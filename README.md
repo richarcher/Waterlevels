@@ -30,7 +30,11 @@ Import the latest data by running `rake waterlevel:import`.
 ## Roadmap
 
 - [x] Nest API behind `api/v1/` path
-- [ ] Add React Frontend
+- [x] Add React Frontend
+  - [x] Add Basic Summary/Detail pages
+  - [ ] Allow user to step through days of levels and animate the change
+  - [ ] Allow user to step through (week|month|year) of levels and animate the change
+  - [ ] Allow auto progress option (auto animate)
 - [ ] Investigate automatic data imports
 
 ## Contributing

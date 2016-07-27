@@ -46,6 +46,7 @@ class HomePageComponent extends React.Component {
   }
 
   animateDamItem() {
+    const storage = Math.max.apply(Math, this.state.dams.map(function( o ){ return o.levels[0].storage; }));
     const firstStyles = range(this.state.dams.length).map(constant( { o: 0 }));
     const otherStyles = (prevInterpolatedStyles) => {
       return prevInterpolatedStyles.map((_, i) => {
@@ -59,7 +60,7 @@ class HomePageComponent extends React.Component {
           return <div>
           {interpolatingStyles.map((otherStyles, i) => {
 
-            return this.createDamItem(this.state.dams[i], otherStyles)
+            return this.createDamItem(this.state.dams[i], otherStyles, storage)
 
           })}
           </div>;
@@ -68,8 +69,8 @@ class HomePageComponent extends React.Component {
     );
   }
 
-  createDamItem(dam, styles) {
-    return <DamListItem key={dam.id} dam={dam} styles={styles} />;
+  createDamItem(dam, styles, storage) {
+    return <DamListItem key={dam.id} dam={dam} styles={styles} storage={storage} />;
   }
 }
 

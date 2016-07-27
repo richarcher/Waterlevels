@@ -14,7 +14,7 @@ class DamListItemComponent extends React.Component {
     return (
       <div className="damitem-component" style={{opacity: this.props.styles.o}}>
         <div>
-          <LatestLevel storage={190878} newLevel={this.props.dam.levels[0]} fullyVisible={fullyVisible} />
+          <LatestLevel storage={this.props.storage} newLevel={this.props.dam.levels[0]} fullyVisible={fullyVisible} />
         </div>
         <div>
           <span>{this.props.dam.levels[0].percentage}%</span>
@@ -29,7 +29,8 @@ DamListItemComponent.displayName = 'DamListItemComponent';
 
 DamListItemComponent.propTypes = {
   dam: React.PropTypes.object.isRequired,
-  styles: React.PropTypes.object.isRequired
+  styles: React.PropTypes.object.isRequired,
+  storage: React.PropTypes.number.isRequired
 };
 
 export default DamListItemComponent;
