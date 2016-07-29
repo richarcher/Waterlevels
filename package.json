@@ -73,6 +73,7 @@
     "normalize.css": "^4.0.0",
     "react": "^15.0.0",
     "react-dom": "^15.0.0",
-    "react-motion": "^0.4.4"
+    "react-motion": "^0.4.4",
+    "react-router-transition": "0.0.5"
   }
 }
