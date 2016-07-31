@@ -10,17 +10,16 @@ require('styles/presentation/DamListItem.scss');
 
 class DamListItemComponent extends React.Component {
   render() {
-    const fullyVisible = this.props.styles.o === 1;
     return (
-      <div className="damitem-component" style={{opacity: this.props.styles.o}}>
+      <Link to={`/dam/${this.props.dam.id}`} className="damitem-component" style={{opacity: this.props.styles.o}}>
         <div>
-          <LatestLevel storage={this.props.storage} newLevel={this.props.dam.levels[0]} fullyVisible={fullyVisible} />
+          <LatestLevel storage={this.props.storage} newLevel={this.props.dam.levels[0]} />
         </div>
         <div>
           <span>{this.props.dam.levels[0].percentage}%</span>
-          <span><Link to={`/dam/${this.props.dam.id}`}>{this.props.dam.name}</Link></span>
+          <span>{this.props.dam.name}</span>
         </div>
-      </div>
+      </Link>
     );
   }
 }

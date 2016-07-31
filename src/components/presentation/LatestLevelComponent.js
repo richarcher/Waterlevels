@@ -11,28 +11,20 @@ class LatestLevelComponent extends React.Component {
     const level = props.newLevel;
     const percentage = parseInt(level.percentage, 10) / 100;
     const wobble = {};
-    const relativeSize = this.props.storage ? parseInt(level.storage,10) / this.props.storage : 3;
+    const relativeSize = this.props.storage ? parseInt(level.storage,10) / this.props.storage : 1;
     const targetArea = props.width*relativeSize;
     const squareRoot = Math.pow((targetArea/props.width),0.5);
-    const newHeight = squareRoot * 150;
-    const newWidth = (squareRoot * props.width) * 150;
+    const newHeight = (squareRoot * props.height) * 100;
+    const newWidth = (squareRoot * props.width) * 100;
 
     return (
-      <div style={{ width: newWidth, height: newHeight }} className="latestlevel-component">
-        { this.renderIfVisible(percentage, wobble) }
+      <div style={{ width: newWidth + '%', paddingTop: newHeight + '%' }} className="latestlevel-component">
+        { this.renderAnimation(percentage, wobble, newWidth) }
       </div>
     );
   }
 
-  renderIfVisible(percentage, wobble) {
-    if (this.props.fullyVisible) {
-      return this.renderAnimation(percentage, wobble)
-    } else {
-      return <div></div>
-    }
-  }
-
-  renderAnimation(percentage, wobble) {
+  renderAnimation(percentage, wobble, newWidth) {
     return (
       <Motion
         defaultStyle={{
@@ -41,9 +33,13 @@ class LatestLevelComponent extends React.Component {
         style={{
           y : spring(percentage, wobble)
         }}>
-
         {
-          style => <div className="inner" style={{transform: `scaleY(${style.y})` }}></div>
+          style => (
+            <div>
+              <div className="counter" style={{fontSize: `${parseInt(newWidth * 10, 10)}%`}}>{parseInt(style.y * 100, 10)}%</div>
+              <div className="inner" style={{transform: `scaleY(${style.y})` }}></div>
+            </div>
+          )
         }
       </Motion>
     );
@@ -55,13 +51,11 @@ LatestLevelComponent.displayName = 'LatestLevelComponent';
 LatestLevelComponent.propTypes = {
   storage: React.PropTypes.number,
   newLevel: React.PropTypes.object.isRequired,
-  oldLevel: React.PropTypes.object,
-  fullyVisible: React.PropTypes.bool
+  oldLevel: React.PropTypes.object
 };
 LatestLevelComponent.defaultProps = {
-  width: 1.618,
-  height: 1,
-  fullyVisible: true,
+  width: 1,
+  height: .618,
   oldLevel: { level : 0 }
 };
 

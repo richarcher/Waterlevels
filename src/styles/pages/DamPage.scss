@@ -1,7 +1,57 @@
 .dampage-component {
-  max-width: 960px;
-  margin: 0 auto;
-
   position: absolute;
-  background: #fff;
+  width: 100%;
+}
+
+.row {
+  @media screen and (min-width:600px) {
+    display: table;
+    width: 100%;
+    border-spacing: 1em;
+  }
+}
+
+.col {
+  @media screen and (min-width:600px) {
+    display: table-cell;
+    width: 50%;
+  }
+}
+
+.u-vtop .col {
+  vertical-align: top;
+}
+
+.slider {
+  background-color: #efefef;
+  border-radius: 1em;
+  margin-bottom: 1em;
+}
+
+.sparkline {
+  background-color: #efefef;
+  border-radius: 1em;
+  margin-bottom: 1em;
+}
+
+.information {
+  background-color: #efefef;
+  border-radius: 1em;
+  position: relative;
+  margin-bottom: 1em;
+}
+.information-map {
+  min-height: 300px;
+}
+.information-summary {
+  background-color: #fff;
+  padding: 1em;
+  box-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+  @media screen and (min-width:600px) {
+    width: 50%;
+    position: absolute;
+    top: -.5em;
+    right: 2em;
+
+  }
 }

@@ -37,9 +37,9 @@ class HomePageComponent extends React.Component {
       <div className="homepage-component">
       <section>
         <h1>Cape Town water levels</h1>
-        <ol>
+        <div>
           { this.animateDamItem() }
-        </ol>
+        </div>
       </section>
       </div>
     );
@@ -55,17 +55,17 @@ class HomePageComponent extends React.Component {
     };
 
     return (
-      <StaggeredMotion defaultStyles={firstStyles} styles={otherStyles}>
-        {(interpolatingStyles) => {
-          return <div>
-          {interpolatingStyles.map((otherStyles, i) => {
+        <StaggeredMotion defaultStyles={firstStyles} styles={otherStyles}>
+          {(interpolatingStyles) => {
+            return <div>
+            {interpolatingStyles.map((otherStyles, i) => {
 
-            return this.createDamItem(this.state.dams[i], otherStyles, storage)
+              return this.createDamItem(this.state.dams[i], otherStyles, storage)
 
-          })}
-          </div>;
-        }}
-      </StaggeredMotion>
+            })}
+            </div>;
+          }}
+        </StaggeredMotion>
     );
   }
 
