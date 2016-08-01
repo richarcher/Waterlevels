@@ -6,9 +6,10 @@
 // Uncomment the following lines to use the react test utilities
 // import TestUtils from 'react-addons-test-utils';
 import createComponent from 'helpers/shallowRenderHelper';
-import DamItemComponent from 'components/presentation/DamItemComponent.js';
 
-describe('DamItemComponent', () => {
+import DamItemComponent from 'components/presentation/DamListItemComponent.js';
+
+describe('DamListItemComponent', () => {
   let component;
 
   beforeEach(() => {
