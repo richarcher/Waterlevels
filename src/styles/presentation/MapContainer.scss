@@ -4,8 +4,7 @@
   position: relative;
   margin-bottom: 5em;
 }
-.information-map,
-.information-summary {
+.information-map {
   height: 300px;
 }
 .information-summary {
@@ -18,6 +17,6 @@
     top: -.5em;
     right: 3em;
     z-index: 1;
-
+    box-sizing: border-box;
   }
 }

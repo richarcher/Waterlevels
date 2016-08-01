@@ -27,11 +27,10 @@ class DamPageComponent extends React.Component {
   render() {
     if (this.state.dam) {
       let dam = this.state.dam;
-      let params = this.props.params;
       let formattedCurrentdate = Moment(dam.levels[0].date).format('DD MMMM YYYY');
 
       return (
-        <div className='dampage-component'>
+        <div className='dampage-component wrapper'>
           <div>
             <Link to={'/'}>All dams</Link>
             <h1>{dam.name} - <span>{formattedCurrentdate}</span></h1>
@@ -58,7 +57,7 @@ class DamPageComponent extends React.Component {
           </div>
 
           <MapBlock dam={dam} />
-          
+
         </div>
       );
     } else {

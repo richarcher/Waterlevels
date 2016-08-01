@@ -34,7 +34,7 @@ class HomePageComponent extends React.Component {
 
   renderDams() {
     return (
-      <div className="homepage-component">
+      <div className="homepage-component wrapper">
       <section>
         <h1>Cape Town water levels</h1>
         <div>

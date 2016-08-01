@@ -36,7 +36,7 @@ class LatestLevelComponent extends React.Component {
         {
           style => (
             <div>
-              <div className="counter" style={{fontSize: `${parseInt(newWidth * 10, 10)}%`}}>{parseInt(style.y * 100, 10)}%</div>
+              <div className="counter" style={{fontSize: `${parseInt(newWidth * 7, 10)}%`}}>{parseInt(style.y * 100, 10)}%</div>
               <div className="inner" style={{transform: `scaleY(${style.y})` }}></div>
             </div>
           )
