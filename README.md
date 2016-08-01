@@ -27,6 +27,21 @@ Start NPM development server - a browser window will open at http://localhost:80
 
 Import the latest data by running `rake waterlevel:import`.
 
+## Development
+
+Add new components via Yeoman and https://github.com/newtriks/generator-react-webpack
+
+```
+  yo react-webpack:component my/namespaced/components/name
+```
+
+or
+
+```
+  yo react-webpack:component my/namespaced/components/name --stateless
+```
+
+
 ## Roadmap
 
 - [x] Nest API behind `api/v1/` path

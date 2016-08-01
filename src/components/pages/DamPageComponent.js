@@ -5,8 +5,8 @@ import * as damApi from '../../actions/dam-api';
 import { Link } from 'react-router';
 import Moment from 'moment'
 
+import MapBlock from '../presentation/MapContainerComponent';
 import LatestLevel from '../presentation/LatestLevelComponent';
-import Map from '../presentation/MapComponent';
 
 require('styles/pages/DamPage.scss');
 
@@ -28,7 +28,6 @@ class DamPageComponent extends React.Component {
     if (this.state.dam) {
       let dam = this.state.dam;
       let params = this.props.params;
-      let formattedLowestDate = Moment(dam.lowest_level.date).format('MMM YYYY');
       let formattedCurrentdate = Moment(dam.levels[0].date).format('DD MMMM YYYY');
 
       return (
@@ -57,17 +56,9 @@ class DamPageComponent extends React.Component {
           <div className='sparkline'>
             [sparkline]
           </div>
-          <div className='information'>
-            <div className='information-summary'>
-              <h2>{dam.name}</h2>
-              <p><abbr title="Global Positioning System">GPS</abbr>: {dam.lat}, {dam.lng}</p>
-              <p>Capacity: <strong>{dam.storage}<abbr title="megalitre">Ml</abbr></strong></p>
-              <p>Lowest recorded level: <strong>{dam.lowest_level.height}%</strong> ({formattedLowestDate})</p>
-            </div>
-            <div className='information-map'>
-              <Map center={{lat: dam.lat, lng: dam.lng}} coords={{lat: dam.lat, lng: dam.lng}}/>
-            </div>
-          </div>
+
+          <MapBlock dam={dam} />
+          
         </div>
       );
     } else {
