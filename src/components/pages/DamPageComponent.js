@@ -5,6 +5,7 @@ import * as damApi from '../../actions/dam-api';
 import { Link } from 'react-router';
 
 import LatestLevel from '../presentation/LatestLevelComponent';
+import Map from '../presentation/MapComponent';
 
 require('styles/pages/DamPage.scss');
 
@@ -60,7 +61,9 @@ class DamPageComponent extends React.Component {
               <p>Capacity:</p>
               <p>Lowest recorded level: 20% (march 2014)</p>
             </div>
-            <div className='information-map'></div>
+            <div className='information-map'>
+              <Map center={{lat: -34.027245, lng: 19.208895}} coords={{lat: -34.027245, lng: 19.208895}}/>
+            </div>
           </div>
         </div>
       );
