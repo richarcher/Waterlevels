@@ -3,6 +3,7 @@
 import React from 'react';
 import * as damApi from '../../actions/dam-api';
 import { Link } from 'react-router';
+import Moment from 'moment'
 
 import LatestLevel from '../presentation/LatestLevelComponent';
 import Map from '../presentation/MapComponent';
@@ -19,13 +20,15 @@ class DamPageComponent extends React.Component {
 
   componentDidMount() {
     damApi.getDamDetail(this.props.params.id).then(response => {
-      this.setState({levels: response.levels})
+      this.setState({dam: response.dam})
     });
   }
 
   render() {
-    if (this.state.levels.length) {
-      const params = this.props.params;
+    if (this.state.dam) {
+      let dam = this.state.dam;
+      let params = this.props.params;
+      let formattedLowestDate = Moment(dam.lowest_level.date).format('MMM YYYY');
 
       return (
         <div className='dampage-component'>
@@ -35,7 +38,7 @@ class DamPageComponent extends React.Component {
           </div>
           <div className='row u-vtop'>
             <div className='col'>
-              <LatestLevel newLevel={this.state.levels[0]} />
+              <LatestLevel newLevel={dam.levels[0]} />
             </div>
             <div className='col'>
               <h1>The equivalent of:</h1>
@@ -58,8 +61,8 @@ class DamPageComponent extends React.Component {
               <h2>[Dam Name]</h2>
               <p>location: 12345n, 12345E</p>
               <p>Address</p>
-              <p>Capacity:</p>
-              <p>Lowest recorded level: 20% (march 2014)</p>
+              <p>Capacity: <strong>{dam.storage}<abbr title="megalitre">Ml</abbr></strong></p>
+              <p>Lowest recorded level: <strong>{dam.lowest_level.height}% ({formattedLowestDate})</strong></p>
             </div>
             <div className='information-map'>
               <Map center={{lat: -34.027245, lng: 19.208895}} coords={{lat: -34.027245, lng: 19.208895}}/>

@@ -15,5 +15,6 @@
 FactoryGirl.define do
   factory :level do
     dam nil
+    storage {rand(10000..300000)}
   end
 end

@@ -3,12 +3,15 @@ module Api::V1
 
     # GET /api/v1/dams
     def index
-      render json: Dam.all
+      @dam = Dam.all
+      render json: @dam, level_count: 1
     end
 
     # GET /api/v1/dams/:id
     def show
-      render json: Level.where(:dam => params[:id]).all
+      @dam = Dam.find(params[:id])
+      @lowest = @dam.levels.reorder('height ASC').first
+      render json: @dam, lowest_level: @lowest
     end
 
   end
