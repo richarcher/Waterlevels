@@ -34,7 +34,7 @@ class Dam < ActiveRecord::Base
           break if row[1] == '0.00'
 
           date = DateTime.strptime(row[0], '%d-%b-%y')
-          height = row[(4*i) + 1] ||= 0
+          height = row[(4*i) + 1] ||= nil
           storage = 0
           storage = row[(4*i) + 2].gsub(/[^0-9]/,'') unless row[(4*i) + 2].nil?
           percentage = row[(4*i) + 3] ||= 0
