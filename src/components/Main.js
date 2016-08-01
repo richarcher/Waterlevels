@@ -6,8 +6,7 @@ import { RouteTransition } from 'react-router-transition'
 class AppComponent extends React.Component {
 
   render() {
-    return <div>
-    <RouteTransition
+    return <RouteTransition
       pathname={this.props.location.pathname}
       atEnter={{ opacity: 0 }}
       atLeave={{ opacity: 0 }}
@@ -15,7 +14,6 @@ class AppComponent extends React.Component {
     >
       {this.props.children}
     </RouteTransition>
-    </div>
   }
 }
 

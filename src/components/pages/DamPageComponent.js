@@ -29,12 +29,13 @@ class DamPageComponent extends React.Component {
       let dam = this.state.dam;
       let params = this.props.params;
       let formattedLowestDate = Moment(dam.lowest_level.date).format('MMM YYYY');
+      let formattedCurrentdate = Moment(dam.levels[0].date).format('DD MMMM YYYY');
 
       return (
         <div className='dampage-component'>
           <div>
             <Link to={'/'}>All dams</Link>
-            <h1>Dam: {params.id} <span>29 July 2016</span></h1>
+            <h1>{dam.name} - <span>{formattedCurrentdate}</span></h1>
           </div>
           <div className='row u-vtop'>
             <div className='col'>
@@ -43,9 +44,9 @@ class DamPageComponent extends React.Component {
             <div className='col'>
               <h1>The equivalent of:</h1>
                 <ul>
-                  <li>nnnnnnnnnnnnn Cups of Artisinal Coffee</li>
-                  <li>nnnnnnn Baths</li>
-                  <li>nnnn Olympic sized swimming pools</li>
+                  <li>[xxxxxxxx] Cups of Artisinal Coffee</li>
+                  <li>[xxxxxx] Baths</li>
+                  <li>[xxxx] Olympic sized swimming pools</li>
                 </ul>
             </div>
           </div>
@@ -58,14 +59,13 @@ class DamPageComponent extends React.Component {
           </div>
           <div className='information'>
             <div className='information-summary'>
-              <h2>[Dam Name]</h2>
-              <p>location: 12345n, 12345E</p>
-              <p>Address</p>
+              <h2>{dam.name}</h2>
+              <p><abbr title="Global Positioning System">GPS</abbr>: {dam.lat}, {dam.lng}</p>
               <p>Capacity: <strong>{dam.storage}<abbr title="megalitre">Ml</abbr></strong></p>
-              <p>Lowest recorded level: <strong>{dam.lowest_level.height}% ({formattedLowestDate})</strong></p>
+              <p>Lowest recorded level: <strong>{dam.lowest_level.height}%</strong> ({formattedLowestDate})</p>
             </div>
             <div className='information-map'>
-              <Map center={{lat: -34.027245, lng: 19.208895}} coords={{lat: -34.027245, lng: 19.208895}}/>
+              <Map center={{lat: dam.lat, lng: dam.lng}} coords={{lat: dam.lat, lng: dam.lng}}/>
             </div>
           </div>
         </div>

@@ -12,7 +12,7 @@ ActiveModel::Serializer.config.adapter = :json
 
 class DamSerializer < ActiveModel::Serializer
   include Rails.application.routes.url_helpers
-  attributes :id, :name, :storage, :links, :levels, :lowest_level, :updated_at,
+  attributes :id, :name, :storage, :lng, :lat, :links, :levels, :lowest_level, :updated_at,
 
   def storage
     object.levels.first.storage
