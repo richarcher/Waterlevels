@@ -29,6 +29,7 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         loader: 'babel-loader',
+        presets: ["airbnb"],
         include: [].concat(
           baseConfig.additionalPaths,
           [

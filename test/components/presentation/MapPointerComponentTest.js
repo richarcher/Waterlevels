@@ -1,22 +1,27 @@
-// /* eslint-env node, mocha */
-// /* global expect */
-// /* eslint no-console: 0 */
-// 'use strict';
-//
-// // Uncomment the following lines to use the react test utilities
-// // import TestUtils from 'react-addons-test-utils';
-// import createComponent from 'helpers/shallowRenderHelper';
-//
-// import MapPointerComponent from 'components/presentation/MapPointerComponent.js';
-//
-// describe('MapPointerComponent', () => {
-//   let component;
-//
-//   beforeEach(() => {
-//     component = createComponent(MapPointerComponent);
-//   });
-//
-//   it('should have its component name as default className', () => {
-//     expect(component.props.className).to.equal('mappointer-component');
-//   });
-// });
+/* eslint-env node, mocha */
+/* global expect */
+/* eslint no-console: 0 */
+
+'use strict';
+
+import React from 'react';
+import { shallow, mount, render } from 'enzyme';
+
+import MapPointer from 'components/presentation/MapPointerComponent';
+
+describe('<MapPointer />', () => {
+
+  describe('when initializing the component', () => {
+    it("renders with a component className v1", () => {
+      expect(shallow(<MapPointer />).contains(<div className="mappointer-component" />)).to.be.ok;
+    });
+
+    it("renders with a component className v2", () => {
+      expect(shallow(<MapPointer />).is('.mappointer-component')).to.be.ok;
+    });
+
+    it("renders with a component className v3", () => {
+      expect(mount(<MapPointer />).find('.mappointer-component').length).to.equal(1);
+    });
+  });
+});
