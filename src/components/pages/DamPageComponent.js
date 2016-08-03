@@ -6,7 +6,7 @@ import { Link } from 'react-router';
 import Moment from 'moment'
 
 import Map from '../presentation/MapContainerComponent';
-import MotionLevel from '../presentation/MotionLevelComponent';
+import MotionLevel from '../container/MotionLevelComponent';
 
 require('styles/pages/DamPage.scss');
 

@@ -12,16 +12,8 @@ import MapPointer from 'components/presentation/MapPointerComponent';
 describe('<MapPointer />', () => {
 
   describe('when initializing the component', () => {
-    it("renders with a component className v1", () => {
-      expect(shallow(<MapPointer />).contains(<div className="mappointer-component" />)).to.be.ok;
-    });
-
-    it("renders with a component className v2", () => {
+    it("renders with a component className", () => {
       expect(shallow(<MapPointer />).is('.mappointer-component')).to.be.ok;
-    });
-
-    it("renders with a component className v3", () => {
-      expect(mount(<MapPointer />).find('.mappointer-component').length).to.equal(1);
     });
   });
 });

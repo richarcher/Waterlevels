@@ -9,7 +9,7 @@ import { shallow, mount, render } from 'enzyme';
 import { Link } from 'react-router';
 
 import Dam from 'components/presentation/DamListItemComponent';
-import MotionLevel from 'components/presentation/MotionLevelComponent';
+import MotionLevel from 'components/container/MotionLevelComponent';
 
 describe('<Dam />', () => {
 
@@ -25,18 +25,18 @@ describe('<Dam />', () => {
     let mockStorage = 300000;
 
     beforeEach(() => {
-      wrapper = shallow(<Dam dam={mockDam} storage={mockStorage} />);
+      wrapper = shallow(<Dam dam={mockDam} largestStorage={mockStorage} />);
     });
 
-    it("renders with a component className", () => {
-      expect(wrapper.find('.damitem-component')).to.have.length(1);
+    it("renders a <Link /> to the dam detail page", () => {
+      expect(wrapper.find(Link).prop('to')).to.equal(`/dam/${mockDam.id}`);
     });
 
     it('should render a <MotionLevel /> component with storage and newLevel props', () => {
       let ll = wrapper.find(MotionLevel);
       expect(ll).to.have.length(1);
-      expect(ll.props().storage).to.equal(mockStorage);
-      expect(ll.props().newLevel).to.deep.equal(mockDam.levels[0]);
+      expect(ll.prop('largestStorage')).to.equal(mockStorage);
+      expect(ll.prop('newLevel')).to.deep.equal(mockDam.levels[0]);
     });
 
     it('renders the dam capacity parcentage', () => {

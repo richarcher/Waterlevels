@@ -1,8 +1,6 @@
 'use strict';
 
 import React from 'react';
-// import { constant, range } from 'lodash';
-// import { StaggeredMotion, spring } from 'react-motion';
 import * as damApi from '../../actions/dam-api';
 
 import DamListItem from '../presentation/DamListItemComponent';
@@ -31,17 +29,17 @@ class HomePageComponent extends React.Component {
   }
 
   _renderDams() {
-    const storage = Math.max.apply( Math, this.state.dams.map( function( o ) { return o.storage; } ) )
+    const largestStorage = Math.max.apply( Math, this.state.dams.map( function( o ) { return o.storage; } ) )
 
     return (
       <div className="homepage-component wrapper">
         <section>
           <h1>Cape Town water levels</h1>
-          <div>
+          <div className="damitems">
             { this.state.dams.map((_,i) => {
                 return <DamListItem key={this.state.dams[i].id}
                                     dam={this.state.dams[i]}
-                                    storage={storage} />
+                                    largestStorage={largestStorage} />
             })}
           </div>
         </section>

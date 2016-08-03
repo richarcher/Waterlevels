@@ -16,9 +16,10 @@ describe('<Waterlevel />', () => {
     let mockStyle = { y: .5 };
     let mockWidth = 100;
     let mockHeight = 61;
+    let mockPercentage = .5
 
     beforeEach(() => {
-      wrapper = shallow(<Waterlevel width={mockWidth} height={mockHeight} style={mockStyle}/>);
+      wrapper = shallow(<Waterlevel width={mockWidth} height={mockHeight} percentage={mockPercentage} style={mockStyle}/>);
     });
 
     it('renders a font-size attribute', () => {
