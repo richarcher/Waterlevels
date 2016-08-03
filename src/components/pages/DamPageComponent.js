@@ -6,7 +6,7 @@ import { Link } from 'react-router';
 import Moment from 'moment'
 
 import Map from '../presentation/MapContainerComponent';
-import LatestLevel from '../presentation/LatestLevelComponent';
+import MotionLevel from '../presentation/MotionLevelComponent';
 
 require('styles/pages/DamPage.scss');
 
@@ -42,7 +42,7 @@ class DamPageComponent extends React.Component {
         </div>
         <div className='row u-vtop'>
           <div className='col'>
-            <LatestLevel newLevel={dam.levels[0]} />
+            <MotionLevel newLevel={dam.levels[0]} />
           </div>
           <div className='col'>
             <h1>The equivalent of:</h1>

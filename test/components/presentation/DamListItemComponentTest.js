@@ -9,7 +9,7 @@ import { shallow, mount, render } from 'enzyme';
 import { Link } from 'react-router';
 
 import Dam from 'components/presentation/DamListItemComponent';
-import LatestLevel from 'components/presentation/LatestLevelComponent';
+import MotionLevel from 'components/presentation/MotionLevelComponent';
 
 describe('<Dam />', () => {
 
@@ -32,8 +32,8 @@ describe('<Dam />', () => {
       expect(wrapper.find('.damitem-component')).to.have.length(1);
     });
 
-    it('should render a <LatestLevel /> component with storage and newLevel props', () => {
-      let ll = wrapper.find(LatestLevel);
+    it('should render a <MotionLevel /> component with storage and newLevel props', () => {
+      let ll = wrapper.find(MotionLevel);
       expect(ll).to.have.length(1);
       expect(ll.props().storage).to.equal(mockStorage);
       expect(ll.props().newLevel).to.deep.equal(mockDam.levels[0]);
