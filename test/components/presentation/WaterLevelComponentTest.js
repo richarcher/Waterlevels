@@ -15,9 +15,14 @@ describe('<Waterlevel />', () => {
     let wrapper;
     let mockStyle = { y: .5 };
     let mockWidth = 100;
+    let mockHeight = 61;
 
     beforeEach(() => {
-      wrapper = shallow(<Waterlevel width={mockWidth} style={mockStyle}/>);
+      wrapper = shallow(<Waterlevel width={mockWidth} height={mockHeight} style={mockStyle}/>);
+    });
+
+    it('renders a font-size attribute', () => {
+      expect(wrapper.find('.waterlevel-component').prop('style')).to.deep.equal({ width: '100%', paddingTop: '61%' });
     });
 
     it('renders a percentage', () => {
@@ -25,7 +30,7 @@ describe('<Waterlevel />', () => {
     });
 
     it('renders a font-size attribute', () => {
-      expect(wrapper.find('.counter').prop('style')).to.deep.equal({ fontSize: '100%' });
+      expect(wrapper.find('.counter').prop('style')).to.deep.equal({ fontSize: '700%' });
     });
 
     it('renders a scale attribute', () => {

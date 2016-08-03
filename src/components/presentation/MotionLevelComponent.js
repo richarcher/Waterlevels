@@ -5,31 +5,29 @@ import {Motion, spring} from 'react-motion';
 
 import Waterlevel from '../presentation/WaterLevelComponent';
 
-require('styles/presentation/MotionLevel.scss');
-
 class MotionLevelComponent extends React.Component {
   render() {
-    const props = this.props;
-    const level = props.newLevel;
-    const percentage = parseInt(level.percentage, 10) / 100;
     const wobble = {};
-    const relativeSize = this.props.storage ? parseInt(level.storage,10) / this.props.storage : 1;
-    const targetArea = props.width*relativeSize;
-    const squareRoot = Math.pow((targetArea/props.width),0.5);
-    const newHeight = (squareRoot * props.height) * 100;
-    const newWidth = (squareRoot * props.width) * 100;
-    const width = parseInt(newWidth * 7, 10);
+
+    const {newLevel, storage, width, height} = this.props;
+    const largestDamStorage = storage;
+
+    const percentage = parseInt(newLevel.percentage, 10) / 100;
+    const relativeSizeOfDam = largestDamStorage ? parseInt(newLevel.storage, 10) / largestDamStorage : 1;
+    const targetAreaOfDam = width * relativeSizeOfDam;
+    const squareRoot = Math.pow((targetAreaOfDam/width),0.5);
+    const newHeight = (squareRoot * height) * 100;
+    const newWidth = (squareRoot * width) * 100;
+    const calcWidth = parseInt(newWidth * 7, 10);
 
     return (
-      <div style={{ width: newWidth + '%', paddingTop: newHeight + '%' }} className="motionlevel-component">
         <Motion
           defaultStyle={{ y : this.props.oldLevel.level }}
           style={{ y : spring(percentage, wobble) }}>
           {
-            (style) => <Waterlevel width={width} style={style} />
+            (style) => <Waterlevel width={newWidth} height={newHeight} style={style} />
           }
         </Motion>
-      </div>
     );
   }
 }
