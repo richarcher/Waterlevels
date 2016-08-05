@@ -9,7 +9,7 @@ class MotionLevelComponent extends React.Component {
   render() {
 
     const {newLevel, largestStorage, width, height} = this.props;
-    const wobble = {stiffness: parseInt(newLevel.percentage, 10) * 3, damping: 5};
+    const wobble = {};
     const percentage = parseInt(newLevel.percentage, 10) / 100;
     const relativeSizeOfDam = largestStorage ? parseInt(newLevel.storage, 10) / largestStorage : 1;
     const targetAreaOfDam = width * relativeSizeOfDam;
@@ -17,7 +17,6 @@ class MotionLevelComponent extends React.Component {
 
     const newHeight = (squareRoot * height) * 100;
     const newWidth = (squareRoot * width) * 100;
-
     return (
         <Motion
           defaultStyle={{ y : this.props.oldLevel.level }}
