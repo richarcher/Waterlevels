@@ -5,6 +5,7 @@ import Moment from 'moment'
 import Slider from 'rc-slider';
 
 require('styles/presentation/Slider.scss');
+require('rc-slider/assets/index.css');
 
 class SliderComponent extends React.Component {
   render() {

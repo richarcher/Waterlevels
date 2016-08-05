@@ -7,6 +7,7 @@ import Moment from 'moment'
 
 import Map from '../presentation/MapContainerComponent';
 import MotionLevel from '../container/MotionLevelComponent';
+import Sparkline from '../presentation/SparklinesComponent';
 import Slider from '../presentation/SliderComponent';
 
 require('styles/pages/DamPage.scss');
@@ -36,8 +37,6 @@ class DamPageComponent extends React.Component {
 
     const handleSliderChange = this._handleSliderChange.bind(this);
 
-
-
     return (
       <div className='dampage-component wrapper'>
         <div>
@@ -58,12 +57,9 @@ class DamPageComponent extends React.Component {
           </div>
         </div>
 
-
-        <div className='sparkline'>
-          [sparkline]
-        </div>
-
         <Slider levels={this.state.dam.levels} handleChange={handleSliderChange} />
+
+        <Sparkline levels={this.state.dam.levels} />
 
         <Map dam={dam} />
 
