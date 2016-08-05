@@ -13,7 +13,7 @@ class SparklinesComponent extends React.Component {
 
     return (
       <div className='sparkline'>
-        <Sparklines data={sampleData} height={20} min={0} max={100}>
+        <Sparklines data={sampleData} preserveAspectRatio={'xMidYMid'} height={30} min={0}>
           <SparklinesLine style={{ stroke: '#87ceeb', strokeWidth:.3, fill: 'none' }} />
         </Sparklines>
       </div>

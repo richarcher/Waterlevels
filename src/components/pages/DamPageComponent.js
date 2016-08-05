@@ -37,6 +37,9 @@ class DamPageComponent extends React.Component {
 
     const handleSliderChange = this._handleSliderChange.bind(this);
 
+    const currentStorage = this._currentStorage.bind(this);
+    const equivalent = this._equivalent.bind(this);
+
     return (
       <div className='dampage-component wrapper'>
         <div>
@@ -48,11 +51,12 @@ class DamPageComponent extends React.Component {
             <MotionLevel newLevel={this.state.currentDam} />
           </div>
           <div className='col'>
-            <h1>The equivalent of:</h1>
+            <h2>Current capacity: {currentStorage(this.state.currentDam)}Ml</h2>
+            <h2>The equivalent of:</h2>
               <ul>
-                <li>[xxxxxxxx] Cups of Artisinal Coffee</li>
-                <li>[xxxxxx] Baths</li>
-                <li>[xxxx] Olympic sized swimming pools</li>
+                <li>{equivalent(0.00000047, currentStorage(this.state.currentDam))} Cups of Artisinal Coffee</li>
+                <li>{equivalent(0.00008, currentStorage(this.state.currentDam))} Baths</li>
+                <li>{equivalent(2.5, currentStorage(this.state.currentDam))} Olympic sized swimming pools</li>
               </ul>
           </div>
         </div>
@@ -70,6 +74,15 @@ class DamPageComponent extends React.Component {
   _handleSliderChange(value) {
     const index = (this.state.dam.levels.length-1) - value;
     this.setState({currentDam : this.state.dam.levels[index] });
+  }
+
+  _currentStorage(level) {
+    const percentage = parseInt(level.percentage, 10) / 100;
+    return (level.storage * percentage).toFixed(2);
+  }
+
+  _equivalent(singleUnit, total) {
+    return (total/ singleUnit).toFixed(0);
   }
 }
 
