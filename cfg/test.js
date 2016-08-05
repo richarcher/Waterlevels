@@ -5,16 +5,13 @@ let srcPath = path.join(__dirname, '/../src/');
 
 let baseConfig = require('./base');
 
-// Add needed plugins here
-let BowerWebpackPlugin = require('bower-webpack-plugin');
-
 module.exports = {
-  devtool: 'eval',
+  devtool: 'cheap-module-source-map',
   module: {
     preLoaders: [
       {
         test: /\.(js|jsx)$/,
-        loader: 'isparta-instrumenter-loader',
+        loader: 'isparta-loader',
         include: [
           path.join(__dirname, '/../src')
         ]
@@ -22,12 +19,17 @@ module.exports = {
     ],
     loaders: [
       {
-        test: /\.(png|jpg|gif|woff|woff2|css|sass|scss|less|styl)$/,
+        test: /\.(png|jpg|gif|woff|woff2|css|sass|scss|less|styl|mp4|ogg|svg)$/,
         loader: 'null-loader'
+      },
+      {
+        test: /\.json$/,
+        loader: 'json'
       },
       {
         test: /\.(js|jsx)$/,
         loader: 'babel-loader',
+        presets: ["airbnb"],
         include: [].concat(
           baseConfig.additionalPaths,
           [
@@ -39,10 +41,9 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: [ '', '.js', '.jsx' ],
+    extensions: [ '', '.js', '.jsx', '.json' ],
     alias: {
       actions: srcPath + 'actions/',
-      helpers: path.join(__dirname, '/../test/helpers'),
       components: srcPath + 'components/',
       sources: srcPath + 'sources/',
       stores: srcPath + 'stores/',
@@ -50,9 +51,10 @@ module.exports = {
       config: srcPath + 'config/' + process.env.REACT_WEBPACK_ENV
     }
   },
-  plugins: [
-    new BowerWebpackPlugin({
-      searchResolveModulesDirectories: false
-    })
-  ]
+  externals: {
+    'react/lib/ExecutionEnvironment': true,
+    'react/addons': true,
+    'react/lib/ReactContext': 'window'
+  },
+  plugins: []
 };

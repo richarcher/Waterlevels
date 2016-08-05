@@ -1,8 +1,6 @@
 'use strict';
 
 import React from 'react';
-import { constant, range } from 'lodash';
-import { StaggeredMotion, spring } from 'react-motion';
 import * as damApi from '../../actions/dam-api';
 
 import DamListItem from '../presentation/DamListItemComponent';
@@ -25,55 +23,31 @@ class HomePageComponent extends React.Component {
   }
 
   render() {
-    if (this.state.dams.length) {
-      return this.renderDams();
-    } else {
-      return <div></div>
-    }
+    const renderDams = this._renderDams.bind(this);
+    const page = this.state.dams.length ? renderDams() : <div></div>
+    return page;
   }
 
-  renderDams() {
+  _renderDams() {
+    const largestStorage = Math.max.apply( Math, this.state.dams.map( function( o ) { return o.storage; } ) )
+
     return (
       <div className="homepage-component wrapper">
-      <section>
-        <h1>Cape Town water levels</h1>
-        <div>
-          { this.animateDamItem() }
-        </div>
-      </section>
+        <section>
+          <h1>Cape Town water levels</h1>
+          <div className="damitems">
+            { this.state.dams.map((_,i) => {
+                return <DamListItem key={this.state.dams[i].id}
+                                    dam={this.state.dams[i]}
+                                    largestStorage={largestStorage} />
+            })}
+          </div>
+        </section>
       </div>
     );
   }
-
-  animateDamItem() {
-    const storage = Math.max.apply(Math, this.state.dams.map(function( o ){ return o.levels[0].storage; }));
-    const firstStyles = range(this.state.dams.length).map(constant( { o: 0 }));
-    const otherStyles = (prevInterpolatedStyles) => {
-      return prevInterpolatedStyles.map((_, i) => {
-        return i === 0 ? { o: spring(1) } : { o: spring(prevInterpolatedStyles[i - 1].o) };
-      })
-    };
-
-    return (
-        <StaggeredMotion defaultStyles={firstStyles} styles={otherStyles}>
-          {(interpolatingStyles) => {
-            return <div>
-            {interpolatingStyles.map((otherStyles, i) => {
-
-              return this.createDamItem(this.state.dams[i], otherStyles, storage)
-
-            })}
-            </div>;
-          }}
-        </StaggeredMotion>
-    );
-  }
-
-  createDamItem(dam, styles, storage) {
-    return <DamListItem key={dam.id} dam={dam} styles={styles} storage={storage} />;
-  }
 }
 
-HomePageComponent.displayName = 'HomePageComponent';
+HomePageComponent.displayName = 'HomePage';
 
 export default HomePageComponent;

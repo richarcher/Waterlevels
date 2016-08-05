@@ -3,33 +3,28 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-import LatestLevel from './LatestLevelComponent';
+import MotionLevel from '../container/MotionLevelComponent';
 
 
 require('styles/presentation/DamListItem.scss');
 
-class DamListItemComponent extends React.Component {
-  render() {
-    return (
-      <Link to={`/dam/${this.props.dam.id}`} className="damitem-component" style={{opacity: this.props.styles.o}}>
-        <div>
-          <LatestLevel storage={this.props.storage} newLevel={this.props.dam.levels[0]} />
-        </div>
-        <div>
-          <span>{this.props.dam.levels[0].percentage}%</span>
-          <span>{this.props.dam.name}</span>
-        </div>
-      </Link>
-    );
-  }
+let DamListItemComponent = (props) => {
+  return (
+    <Link to={`/dam/${props.dam.id}`} className="damitem-component">
+      <MotionLevel largestStorage={props.largestStorage} newLevel={props.dam.levels[0]} />
+      <div className="damitem-text">
+        <span className="damitem-percentage">{props.dam.levels[0].percentage}%</span>
+        <span className="damitem-name">{props.dam.name}</span>
+      </div>
+    </Link>
+  )
 }
 
-DamListItemComponent.displayName = 'DamListItemComponent';
+DamListItemComponent.displayName = 'Dam';
 
 DamListItemComponent.propTypes = {
   dam: React.PropTypes.object.isRequired,
-  styles: React.PropTypes.object.isRequired,
-  storage: React.PropTypes.number.isRequired
+  largestStorage: React.PropTypes.number.isRequired
 };
 
 export default DamListItemComponent;

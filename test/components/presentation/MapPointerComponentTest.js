@@ -1,22 +1,19 @@
 /* eslint-env node, mocha */
 /* global expect */
 /* eslint no-console: 0 */
+
 'use strict';
 
-// Uncomment the following lines to use the react test utilities
-// import TestUtils from 'react-addons-test-utils';
-import createComponent from 'helpers/shallowRenderHelper';
+import React from 'react';
+import { shallow, mount, render } from 'enzyme';
 
-import MapPointerComponent from 'components/presentation/MapPointerComponent.js';
+import MapPointer from 'components/presentation/MapPointerComponent';
 
-describe('MapPointerComponent', () => {
-  let component;
+describe('<MapPointer />', () => {
 
-  beforeEach(() => {
-    component = createComponent(MapPointerComponent);
-  });
-
-  it('should have its component name as default className', () => {
-    expect(component.props.className).to.equal('mappointer-component');
+  describe('when initializing the component', () => {
+    it("renders with a component className", () => {
+      expect(shallow(<MapPointer />).is('.mappointer-component')).to.be.ok;
+    });
   });
 });

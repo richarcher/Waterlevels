@@ -14,13 +14,14 @@ class MapComponent extends React.Component {
   }
 
   render() {
+    const handleChange = this._handleChange.bind(this);
     return (
       <GoogleMap
         bootstrapURLKeys={{key: 'AIzaSyCTvhzXM-Tfsaf3fcvniqrAAN8sEr0EqDI'}}
         center={this.state.center}
         zoom={this.props.zoom}
-        onChange={this._handleChange}>
-        <MapPointer {...this.props.coords} text={'0'} />
+        onChange={handleChange}>
+        <MapPointer {...this.props.coords} />
       </GoogleMap>
     );
   }
@@ -33,18 +34,18 @@ class MapComponent extends React.Component {
   }
 }
 
-MapComponent.displayName = 'PresentationMapComponent';
+MapComponent.displayName = 'Map';
 
 MapComponent.propTypes = {
   center: React.PropTypes.object.isRequired,
-  zoom: React.PropTypes.number,
-  coords: React.PropTypes.object.isRequired
+  coords: React.PropTypes.object.isRequired,
+  zoom: React.PropTypes.number
 };
 
 MapComponent.defaultProps = {
   center: {lat: null, lng: null},
-  zoom: 11,
-  coords: {lat: null, lng: null}
+  coords: {lat: null, lng: null},
+  zoom: 11
 };
 
 export default MapComponent;

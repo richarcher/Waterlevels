@@ -1,22 +1,52 @@
 /* eslint-env node, mocha */
 /* global expect */
 /* eslint no-console: 0 */
+
 'use strict';
 
-// Uncomment the following lines to use the react test utilities
-// import TestUtils from 'react-addons-test-utils';
-import createComponent from 'helpers/shallowRenderHelper';
+import React from 'react';
+import { shallow, mount, render } from 'enzyme';
 
-import MapComponent from 'components/presentation/MapComponent.js';
+import GoogleMap from 'google-map-react';
+import MapPointer from 'components/presentation/MapPointerComponent';
+import Map from 'components/presentation/MapComponent.js';
 
-describe('MapComponent', () => {
-  let component;
+function mockItem(overrides) {
+  let target = {};
+  let defaults = {
+  }
+  Object.assign(target, defaults, overrides);
+  return target;
+}
 
-  beforeEach(() => {
-    component = createComponent(MapComponent);
+describe('<Map />', () => {
+
+  describe('when initializing the component', () => {
+    let wrapper;
+
+    beforeEach(() => {
+      wrapper = shallow(<Map />);
+    });
+
+    it('renders a <GoogleMap />', () => {
+      let map = wrapper.find(GoogleMap);
+      expect(map).to.have.length(1);
+    });
+
+    it('renders a <MapPointer />', () => {
+      let mappointer = wrapper.find(MapPointer);
+      expect(mappointer).to.have.length(1);
+    });
+
+    it('assigns default properties', () => {
+      expect(wrapper.prop('center')).to.deep.equal({ lat: null, lng: null });
+      expect(wrapper.prop('zoom')).to.equal(11);
+    });
+
+    it('assigns the center prop to state', () => {
+      expect(wrapper.state().center).to.deep.equal({ lat: null, lng: null });
+    });
+
   });
 
-  it('should have its component name as default className', () => {
-    expect(component.props.className).to.equal('map-component');
-  });
 });
