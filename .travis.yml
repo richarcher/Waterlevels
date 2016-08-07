@@ -2,5 +2,12 @@ language: ruby
 sudo: false
 services:
   - postgresql
+install:
+  - bundle install
+  # - npm install
 before_script:
   - psql -c 'create database waterlevels_test;' -U postgres
+script:
+  - bundle exec rake
+  # - npm run dist
+  # - npm test
