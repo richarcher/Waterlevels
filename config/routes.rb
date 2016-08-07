@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  root to: "pages#index"
-
-  resources :pages, only: :index
+  root to: 'dams#index'
+  
+  resources :dams, only: [:index, :show]
 
   namespace :api do
     namespace :v1 do

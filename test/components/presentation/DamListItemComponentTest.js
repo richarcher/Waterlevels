@@ -29,7 +29,7 @@ describe('<Dam />', () => {
     });
 
     it("renders a <Link /> to the dam detail page", () => {
-      expect(wrapper.find(Link).prop('to')).to.equal(`/dam/${mockDam.id}`);
+      expect(wrapper.find(Link).prop('to')).to.equal(`/dams/${mockDam.id}`);
     });
 
     it('should render a <MotionLevel /> component with storage and newLevel props', () => {

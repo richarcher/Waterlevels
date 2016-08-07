@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Dams</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+</head>
+<body>
+  <div id="app">
+    <h1><%= @dam.name %> - <%= @dam.levels[0].date %></h1>
+    <p><%= @dam.levels[0].percentage %>%</p>
+    <ul>
+      <li>GPS: <%= @dam.lat %>, <%= @dam.lng %></li>
+      <li>Storage: <%= @dam.levels[0].storage %> Ml</li>
+    </ul>
+    <p><%= link_to 'All dams', dams_path %></p>
+  </div>
+  <script type="text/javascript" src="/assets/app.js"></script>
+</body>
+</html>

@@ -10,7 +10,7 @@ require('styles/presentation/DamListItem.scss');
 
 let DamListItemComponent = (props) => {
   return (
-    <Link to={`/dam/${props.dam.id}`} className="damitem-component">
+    <Link to={`/dams/${props.dam.id}`} className="damitem-component">
       <MotionLevel largestStorage={props.largestStorage} newLevel={props.dam.levels[0]} />
       <div className="damitem-text">
         <span className="damitem-percentage">{props.dam.levels[0].percentage}%</span>
