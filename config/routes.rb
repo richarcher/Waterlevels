@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
-  root to: "api/v1/dams#index"
+  root to: "pages#index"
+
+  resources :pages, only: :index
+
   namespace :api do
     namespace :v1 do
-      resources :dams
+      resources :dams, only: [:index, :show]
     end
   end
 end

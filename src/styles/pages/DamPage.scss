@@ -1,0 +1,27 @@
+.dampage-component {
+}
+
+.row {
+  @media screen and (min-width:600px) {
+    display: table;
+    width: 100%;
+    border-spacing: 1em;
+  }
+}
+
+.col {
+  @media screen and (min-width:600px) {
+    display: table-cell;
+    width: 50%;
+  }
+}
+
+.u-vtop .col {
+  vertical-align: top;
+}
+
+.slider {
+  background-color: #efefef;
+  border-radius: 1em;
+  margin-bottom: 1em;
+}

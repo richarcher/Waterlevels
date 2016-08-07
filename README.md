@@ -13,18 +13,43 @@ A demo site can be viewed at http://178.62.79.103/
 3. `rake db:setup && rake db:migrate`
 4. `rake` - will run the test suite
 
-## Usage
+## Usage via Foreman
 
-Start the server: `rails s`
+Start Postgres, Rails and NPM serve tasks with `foreman start -f Procfile.dev`
 
-Visit http://localhost:3000
+## Usage alternate
+
+Start Postgres
+
+Start rails server `bundle exec rails s` - this will run an API server at http://localhost:3000
+
+Start NPM development server - a browser window will open at http://localhost:8000
 
 Import the latest data by running `rake waterlevel:import`.
+
+## Development
+
+Add new components via Yeoman and https://github.com/newtriks/generator-react-webpack
+
+```
+  yo react-webpack:component my/namespaced/components/name
+```
+
+or
+
+```
+  yo react-webpack:component my/namespaced/components/name --stateless
+```
+
 
 ## Roadmap
 
 - [x] Nest API behind `api/v1/` path
-- [ ] Add React Frontend
+- [x] Add React Frontend
+  - [x] Add Basic Summary/Detail pages
+  - [ ] Allow user to step through days of levels and animate the change
+  - [ ] Allow user to step through (week|month|year) of levels and animate the change
+  - [ ] Allow auto progress option (auto animate)
 - [ ] Investigate automatic data imports
 
 ## Contributing

@@ -1,0 +1,8 @@
+{
+  "generator-react-webpack": {
+    "appName": "waterlevel",
+    "style": "scss",
+    "postcss": true,
+    "generatedWithVersion": 3
+  }
+}

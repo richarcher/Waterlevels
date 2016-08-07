@@ -1,0 +1,22 @@
+.information {
+  background-color: #efefef;
+  border-radius: 1em;
+  position: relative;
+  margin-bottom: 5em;
+}
+.information-map {
+  height: 300px;
+}
+.information-summary {
+  background-color: #fff;
+  padding: 1em;
+  box-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+  @media screen and (min-width:600px) {
+    width: 45%;
+    position: absolute;
+    top: -.5em;
+    right: 3em;
+    z-index: 1;
+    box-sizing: border-box;
+  }
+}

@@ -7,6 +7,7 @@ gem 'rails', '>= 5.0.0.rc2', '< 5.1'
 gem 'pg'
 gem 'jbuilder', '~> 2.0'
 gem 'active_model_serializers'
+gem 'rack-cors'
 
 group :production do
   gem 'puma'
@@ -27,6 +28,7 @@ group :development, :test do
   gem 'capistrano-bundler', require: false
   gem 'capistrano3-puma',   require: false
   gem 'capistrano-secrets-yml', require: false
+  gem 'foreman'
 end
 
 group :development do
