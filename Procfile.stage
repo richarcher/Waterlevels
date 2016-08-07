@@ -1,0 +1,2 @@
+api: bundle exec rails server -p 3000
+db: postgres -D /usr/local/var/postgres/
