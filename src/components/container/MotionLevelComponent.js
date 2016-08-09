@@ -22,7 +22,7 @@ class MotionLevelComponent extends React.Component {
           defaultStyle={{ y : this.props.oldLevel.level }}
           style={{ y : spring(percentage, wobble) }}>
           {
-            (style) => <Waterlevel width={newWidth} height={newHeight} style={style} percentage={percentage} />
+            (style) => <Waterlevel width={newWidth} height={newHeight} style={style} percentage={style.y} />
           }
         </Motion>
     );
