@@ -27,11 +27,11 @@ describe('<Waterlevel />', () => {
     });
 
     it('renders a percentage', () => {
-      expect(wrapper.find('.counter').text()).to.equal('50%');
+      expect(wrapper.find('.counter').text()).to.equal('50.0%');
     });
 
     it('renders a font-size attribute', () => {
-      expect(wrapper.find('.counter').prop('style')).to.deep.equal({ fontSize: '700%' });
+      expect(wrapper.find('.counter').prop('style')).to.deep.equal({ fontSize: '500%' });
     });
 
     it('renders a scale attribute', () => {

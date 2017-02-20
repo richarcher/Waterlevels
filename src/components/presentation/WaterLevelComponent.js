@@ -5,8 +5,8 @@ import React from 'react';
 require('styles/presentation/WaterLevel.scss');
 
 let WaterLevelComponent = (props) => {
-  const fontsize = parseInt(props.width * 7, 10)
-  const percentageFormatter = `${parseInt(props.percentage * 100, 10)}%`
+  const fontsize = parseInt(props.width * 5, 10)
+  const percentageFormatter = `${(props.percentage * 100).toFixed(1)}%`
   return (
     <div className="waterlevel-component" style={{ width: props.width + '%', paddingTop: props.height + '%' }}>
       <div className="counter" style={{fontSize: `${fontsize}%`}}>{percentageFormatter}</div>

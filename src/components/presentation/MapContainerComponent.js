@@ -13,7 +13,7 @@ let MapContainerComponent = (props) => (
       <h2>{props.dam.name}</h2>
       <p><abbr title="Global Positioning System">GPS</abbr>: {props.dam.lat}, {props.dam.lng}</p>
       <p>Capacity: <strong>{props.dam.storage}<abbr title="megalitre">Ml</abbr></strong></p>
-      <p>Lowest recorded level: <strong>{props.dam.lowest_level.height}%</strong> ({Moment(props.dam.lowest_level.date).format('MMM YYYY')})
+      <p>Lowest recorded level: <strong>{(parseFloat(props.dam.lowest_level.percentage).toFixed(1))}%</strong> ({Moment(props.dam.lowest_level.date).format('DD MMM YYYY')})
       </p>
     </div>
     <div className='information-map'>

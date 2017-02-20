@@ -39,10 +39,6 @@ describe('<Dam />', () => {
       expect(ll.prop('newLevel')).to.deep.equal(mockDam.levels[0]);
     });
 
-    it('renders the dam capacity parcentage', () => {
-      expect(wrapper.find('.damitem-percentage').text()).to.equal(`${mockDam.levels[0].percentage}%`);
-    });
-
     it('renders the dam name', () => {
       expect(wrapper.find('.damitem-name').text()).to.equal(mockDam.name);
     });

@@ -16,7 +16,8 @@ function mockItem(overrides) {
       name: 'Fake dam',
       lowest_level: {
         height: 5,
-        date: '2016-07-25T00:00:00.000Z'
+        date: '2016-07-25T00:00:00.000Z',
+        percentage: '5.0000'
       },
       storage: 1000,
       lat: -30,
@@ -71,7 +72,7 @@ describe('<MapContainer />', () => {
       });
 
       it('renders the lowest recorded level', () => {
-        expect(wrapper.text()).to.contain('Lowest recorded level: 5% (Jul 2016)');
+        expect(wrapper.text()).to.contain('Lowest recorded level: 5.0% (25 Jul 2016)');
       });
     });
   });
