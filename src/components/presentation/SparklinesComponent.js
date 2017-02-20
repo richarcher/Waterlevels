@@ -9,7 +9,7 @@ class SparklinesComponent extends React.Component {
 
   render() {
 
-    const sampleData = this.props.levels.map(d => d.percentage);
+    const sampleData = this.props.levels.map(d => d.percentage).reverse();
 
     return (
       <div className='sparkline'>

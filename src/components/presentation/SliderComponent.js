@@ -16,7 +16,7 @@ class SliderComponent extends React.Component {
 
     return (
       <div>
-        <Slider tipTransitionName="rc-slider-tooltip-zoom-down" min={minRange} max={maxRange} defaultValue={levelCount} tipFormatter={tooltipFormatter} onAfterChange={this.props.handleChange} />
+        <Slider tipTransitionName="rc-slider-tooltip-zoom-down" min={minRange} max={maxRange} defaultValue={levelCount} tipFormatter={tooltipFormatter} onChange={this.props.handleChange} />
         <br/>
       </div>
     );

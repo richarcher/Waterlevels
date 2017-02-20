@@ -20,9 +20,9 @@ describe "/api/v1/dams" do
     expect(json['dams'][0]['name']).to eq( @dams[0].name )
   end
 
-  it 'sends a storage from the latest level' do
+  it 'sends a storage from the highest level' do
     json =  JSON.parse(response.body)
-    expect(json['dams'][0]['storage']).to eq( @dams[0].levels[0].storage )
+    expect(json['dams'][0]['storage']).to eq( @dams[0].highest_level.storage )
   end
 
   it 'sends a link to individual dam api' do
@@ -64,7 +64,7 @@ describe "/api/v1/dams/:id" do
 
   it 'sends the lowest level' do
     json =  JSON.parse(response.body)
-    expect(json['dam']['lowest_level'].keys).to contain_exactly('date', 'height')
+    expect(json['dam']['lowest_level'].keys).to contain_exactly('date', 'height', 'percentage')
   end
 
 end

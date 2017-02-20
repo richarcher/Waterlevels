@@ -10,10 +10,10 @@ class MotionLevelComponent extends React.Component {
 
     const {newLevel, largestStorage, width, height} = this.props;
     const wobble = {};
-    const percentage = parseInt(newLevel.percentage, 10) / 100;
+    const percentage = parseFloat(newLevel.percentage) / 100;
     const relativeSizeOfDam = largestStorage ? parseInt(newLevel.storage, 10) / largestStorage : 1;
     const targetAreaOfDam = width * relativeSizeOfDam;
-    const squareRoot = Math.pow((targetAreaOfDam/width),0.5);
+    const squareRoot = Math.pow((targetAreaOfDam/width),.5);
 
     const newHeight = (squareRoot * height) * 100;
     const newWidth = (squareRoot * width) * 100;
@@ -22,7 +22,7 @@ class MotionLevelComponent extends React.Component {
           defaultStyle={{ y : this.props.oldLevel.level }}
           style={{ y : spring(percentage, wobble) }}>
           {
-            (style) => <Waterlevel width={newWidth} height={newHeight} style={style} percentage={style.y} />
+            (style) => <Waterlevel width={newWidth} height={newHeight} style={style} percentage={percentage} />
           }
         </Motion>
     );

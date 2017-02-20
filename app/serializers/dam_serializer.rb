@@ -15,7 +15,7 @@ class DamSerializer < ActiveModel::Serializer
   attributes :id, :name, :storage, :lng, :lat, :links, :levels, :lowest_level, :updated_at,
 
   def storage
-    object.levels.first.storage
+    object.highest_level.storage
   end
 
   def lowest_level
@@ -23,6 +23,7 @@ class DamSerializer < ActiveModel::Serializer
     if @lowest = instance_options[:lowest_level]
       lowest_level[:date] = @lowest.date
       lowest_level[:height] = @lowest.height
+      lowest_level[:percentage] = @lowest.percentage
       return lowest_level
     else
       return nil
