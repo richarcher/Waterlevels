@@ -2,6 +2,8 @@ default: &default
   adapter: postgresql
   pool: 5
   timeout: 5000
+  host: db
+  user: postgres
 development:
   <<: *default
   database: waterlevels_development
