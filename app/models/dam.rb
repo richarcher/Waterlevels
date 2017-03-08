@@ -38,6 +38,7 @@ class Dam < ActiveRecord::Base
           storage = 0
           storage = row[(4*i) + 2].gsub(/[^0-9]/,'') unless row[(4*i) + 2].nil?
           percentage = row[(4*i) + 3] ||= 0
+          next if percentage == 0
           next if d.levels.find_by_date(date).present?
           puts "adding #{damname} : #{date}" if d.levels.find_by_date(date).nil?  unless Rails.env.test?
           d.levels.create(date: date, height: height, storage: storage, percentage: percentage)
