@@ -48,7 +48,11 @@ class Dam < ActiveRecord::Base
   end
 
   def highest_level
-    levels.find_by(percentage: '100.0') || levels.sort {|a,b| a.percentage <=> b.percentage}.reverse.first
+    levels.sort {|a,b| a.percentage <=> b.percentage}.reverse.first
+  end
+
+  def lowest_level
+    levels.sort {|a,b| a.percentage <=> b.percentage}.first
   end
 
 end

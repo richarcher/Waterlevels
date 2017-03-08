@@ -10,8 +10,7 @@ module Api::V1
     # GET /api/v1/dams/:id
     def show
       @dam = Dam.find(params[:id])
-      @lowest = @dam.levels.reorder('height ASC').first
-      render json: @dam, lowest_level: @lowest
+      render json: @dam
     end
 
   end

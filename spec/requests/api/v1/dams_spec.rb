@@ -37,12 +37,19 @@ describe "/api/v1/dams" do
 
   it 'sends the most recent level object' do
     json = JSON.parse(response.body)['dams'][0]['levels'][0].keys
-    expect(json).to contain_exactly('date', 'height', 'percentage', 'storage')
+    expect(json).to include('date', 'height', 'percentage', 'storage')
   end
 
   it 'sends the lowest level' do
     json =  JSON.parse(response.body)
-    expect(json['dams'][0]['lowest_level']).to eq(nil)
+    lowest = json['dams'][0]['lowest_level'].keys
+    expect(lowest).to include('date', 'height', 'percentage', 'storage')
+  end
+
+  it 'sends the highest level' do
+    json =  JSON.parse(response.body)
+    highest = json['dams'][0]['highest_level'].keys
+    expect(highest).to include('date', 'height', 'percentage', 'storage')
   end
 end
 
@@ -64,7 +71,13 @@ describe "/api/v1/dams/:id" do
 
   it 'sends the lowest level' do
     json =  JSON.parse(response.body)
-    expect(json['dam']['lowest_level'].keys).to contain_exactly('date', 'height', 'percentage')
+    expect(json['dam']['lowest_level'].keys).to include('date', 'height', 'percentage')
+  end
+
+  it 'sends the highest level' do
+    json =  JSON.parse(response.body)
+    highest = json['dam']['highest_level'].keys
+    expect(highest).to include('date', 'height', 'percentage', 'storage')
   end
 
 end

@@ -12,34 +12,25 @@ ActiveModel::Serializer.config.adapter = :json
 
 class DamSerializer < ActiveModel::Serializer
   include Rails.application.routes.url_helpers
-  attributes :id, :name, :storage, :lng, :lat, :links, :levels, :lowest_level, :updated_at,
+  attributes :id, :name, :lng, :lat, :storage, :links, :highest_level, :lowest_level, :levels, :updated_at,
 
   def storage
     object.highest_level.storage
   end
 
+  def highest_level
+    object.highest_level
+  end
+
   def lowest_level
-    lowest_level = {}
-    if @lowest = instance_options[:lowest_level]
-      lowest_level[:date] = @lowest.date
-      lowest_level[:height] = @lowest.height
-      lowest_level[:percentage] = @lowest.percentage
-      return lowest_level
-    else
-      return nil
-    end
+    object.lowest_level
   end
 
   def levels
-    @count = instance_options[:level_count] || 10000
+    @count = instance_options[:level_count] || 100000
     customised_levels = []
     object.levels.first(@count).each do |level|
-      custom_level = {}
-      custom_level[:date] = level.date
-      custom_level[:height] = level.height
-      custom_level[:storage] = level.storage
-      custom_level[:percentage] = level.percentage
-      customised_levels.push(custom_level)
+      customised_levels.push(level)
     end
     customised_levels
   end
